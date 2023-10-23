@@ -6,6 +6,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  transition: 0.5s ease-in-out;
 }
 
 html, body {
@@ -40,4 +41,22 @@ body {
 img.visible {
   opacity: 100%;
   display: inline;
+}
+
+.dot {
+  border: solid 2px gray;
+  height: 0.75rem;
+  width: 0.75rem;
+  /* background-color: #bbb; */
+  border-radius: 50%;
+  display: inline-block;
+}
+
+button:hover,
+.dot:hover {
+  cursor: pointer;
+}
+
+.active {
+  background-color: gray;
 }

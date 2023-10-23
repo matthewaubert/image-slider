@@ -1,32 +1,39 @@
+let count = 0;
+
 // cache DOM
 const images = document.querySelectorAll('.carousel-slides > img');
 const previous = document.querySelector('.previous');
 const next = document.querySelector('.next');
-
-// funcs...
-const carouselControls = (function() {
-  let count = 0;
-
-  function next() {
-    toggleVisible(images[count]); // remove visible from current img
-    count = (count + 1) % images.length; // increment count
-    toggleVisible(images[count]); // add visible to current img
-  }
-  
-  function previous() {
-    toggleVisible(images[count]); // remove visible from current img
-    count === 0 ? count = images.length - 1 : count--; // decrement count
-    toggleVisible(images[count]);  // add visible to current img
-  }
-
-  // toggle visible of current el
-  function toggleVisible(el) {
-    el.classList.toggle('visible');
-  }
-
-  return { next, previous };
-})();
+const dots = document.querySelectorAll('.dot');
 
 // add event listeners
-next.addEventListener('click', carouselControls.next);
-previous.addEventListener('click', carouselControls.previous);
+next.addEventListener('click', showNext);
+previous.addEventListener('click', showPrevious);
+dots.forEach(dot => dot.addEventListener('click', showSlide));
+
+// advance to next slide
+function showNext() {
+  toggleVisible(); // remove 'visible' from current img
+  count = (count + 1) % images.length; // increment count
+  toggleVisible(); // add 'visible' to current img
+}
+
+// retreat to previous slide
+function showPrevious() {
+  toggleVisible(); // remove 'visible' from current img
+  count === 0 ? count = images.length - 1 : count--; // decrement count
+  toggleVisible(); // add 'visible' to current img
+}
+
+// show slide related to dot clicked
+function showSlide() {
+  toggleVisible(); // remove 'visible' from current img
+  count = Number(this.dataset.for); // change count to data.for attribute
+  toggleVisible(); // add 'visible' to current img
+}
+
+// toggle visibility of input el
+function toggleVisible() {
+  images[count].classList.toggle('visible');
+  dots[count].classList.toggle('active');
+}
