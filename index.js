@@ -1,5 +1,3 @@
-let count = 0;
-
 // cache DOM
 const images = document.querySelectorAll('.carousel-slides > img');
 const previous = document.querySelector('.previous');
@@ -10,6 +8,8 @@ const dots = document.querySelectorAll('.dot');
 next.addEventListener('click', showNext);
 previous.addEventListener('click', showPrevious);
 dots.forEach(dot => dot.addEventListener('click', showSlide));
+
+let count = 0;
 
 // advance to next slide
 function showNext() {
@@ -37,3 +37,11 @@ function toggleVisible() {
   images[count].classList.toggle('visible');
   dots[count].classList.toggle('active');
 }
+
+function initSlideshow() {
+  setInterval(showNext, 5000);
+}
+
+initSlideshow();
+
+// export { showNext, showPrevious, showSlide, initSlideshow };

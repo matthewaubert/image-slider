@@ -47,7 +47,6 @@ img.visible {
   border: solid 2px gray;
   height: 0.75rem;
   width: 0.75rem;
-  /* background-color: #bbb; */
   border-radius: 50%;
   display: inline-block;
 }
