@@ -28,7 +28,7 @@ function showPrevious() {
 // show slide related to dot clicked
 function showSlide() {
   toggleVisible(); // remove 'visible' from current img
-  count = Number(this.dataset.for); // change count to data.for attribute
+  count = Number(this.dataset.count); // change count to data.count attribute
   toggleVisible(); // add 'visible' to current img
 }
 
